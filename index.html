@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>SHIFUMI</title>
     </head>
+    <form action="">
+        <input type="button" value="rock">
+
+    </form>
     <script>
         function comptuerPlay(){
             let n = (Math.floor(Math.random()*3));
@@ -20,37 +24,45 @@
             }
             return result;
         }
-        let PlayerEntre = prompt("rock,paper,scisor");
-        const PlayerSelection = PlayerEntre.toLowerCase();
+        let PlayerEntre = document.querySelector('input');
+        const PlayerSelection = PlayerEntre;
         const ComputerSelection = comptuerPlay();
 
         function Round(PlayerSelection,ComputerSelection){
             if (PlayerSelection == ComputerSelection) {
-                console.log("NULL");
+                return "NULL" ;
             }
             else if(PlayerSelection == "rock" && ComputerSelection == "scisor") {
-                console.log("player WIN");
+                return "player WIN";
             }
             else if (PlayerSelection == "paper" && ComputerSelection == "scisor") {
-                console.log("Computer WIN");
+                return "Computer WIN";
             }
             else if (PlayerSelection == "scisor" && ComputerSelection == "rock") {
-                console.log("computer win");
+                return "computer win";
             } 
             else if (PlayerSelection == "paper" && ComputerSelection == "rock") {
-                console.log("player win");
+                return "player win";
             }
             else if (PlayerSelection == "rock" && ComputerSelection == "paper") {
-                console.log("computer win");
+                return "computer win";
             }
             else if (PlayerSelection == "scisor" && ComputerSelection == "paper") {
-                console.log("player win");
+                return "player win";
             }
             else {
-                console.log("something's wrong")
+                return "something's wrong";
             }
         }
-        Round(PlayerSelection,ComputerSelection);
+        
+        function Game(){
+            do {
+                console.log(Round(PlayerSelection,ComputerSelection));
+                i++;
+            }
+            while(i < 5);
+        }
+        
             
             
             
