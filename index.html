@@ -6,7 +6,11 @@
     </head>
    
     <script>
-        function comptuerPlay(){
+        let computerScore = 0;
+        let playerScore = 0 ;
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+        function computerPlay(){
             let n = (Math.floor(Math.random()*3));
             switch (n) {
                 case 0 : 
@@ -21,19 +25,27 @@
             }
             return result;
         }
-        let PlayerEntre = prompt("rock,paper,scisor");
-        const PlayerSelection = PlayerEntre.toLowerCase();
-        const ComputerSelection = comptuerPlay();
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+        function PlayerInput(){
+            let PlayerEntre = prompt("rock,paper,scisor");
+            let PlayerSelection = PlayerEntre.toLowerCase();
+            return PlayerSelection ;
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////
 
         function Round(PlayerSelection,ComputerSelection){
+            
             if (PlayerSelection == ComputerSelection) {
                 return "NULL" ;
             }
             else if(PlayerSelection == "rock" && ComputerSelection == "scisor") {
-                return "player WIN";
+                return "player win" ;
             }
             else if (PlayerSelection == "paper" && ComputerSelection == "scisor") {
-                return "Computer WIN";
+                return "computer win";
             }
             else if (PlayerSelection == "scisor" && ComputerSelection == "rock") {
                 return "computer win";
@@ -50,16 +62,43 @@
             else {
                 return "something's wrong";
             }
+            
         }
+////////////////////////////////////////////////////////////////////////////////////////////////  
+
+        function score(playerScore,computerScore){
+            if (Round() =="computer win"){
+                computerScore ++;
+                return computerScore;
+            }
+            else if (Round() =="player win"){
+                playerScore ++;
+                return playerScore;
+            }
+        }
+        
+/////////////////////////////////////////////////////////////////////////////////////////////////        
         
         function Game(){
+            let i = 0;
+            
             do {
+                let tour = "tour "+ i;
+                let PlayerSelection = PlayerInput();
+                let ComputerSelection = computerPlay();
+                console.log(tour);
                 console.log(Round(PlayerSelection,ComputerSelection));
+                score();
+                
+                console.log(`PLAYER: ${playerScore } / COMPUTER: ${computerScore }`)
+                
                 i++;
             }
-            while(i < 5);
+            while (i<3);
+            
+            return "end of game";
         }
-        
+        Game();
             
             
             
